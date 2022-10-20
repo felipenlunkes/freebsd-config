@@ -25,7 +25,7 @@ pkg update
 # Agora devemos instalar os pacotes necessários
 
 pkg install xorg 
-pkg install nano bash networkmgr wifimgr
+pkg install nano bash networkmgr wifimgr security/sudo
 pkg install sddm
 pkg install kde5
 pkg intall drm-kmod
