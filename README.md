@@ -11,7 +11,7 @@ The [script](config.sh), present in this directory, is responsible for automatin
 * Creation and editing of configuration files for the graphical environment and for the network interface;
 * Updated pkg and FreeBSD catalog (kernel and userland).
 
-The user must only edit the CARD0 variable, informing the video card he has.
+The user must only edit the `CARD0` variable, informing the video card he has.
 
 </div>
 
@@ -28,6 +28,6 @@ O [script](config.sh), presente neste diretório, é responsável por automatiza
 * Criação e edição de arquivos de configuração para o ambiente gráfico e para interface de rede;
 * Atualização do catálogo do pkg e do FreeBSD (kernel e userland).
 
-O usuário deve apenas editar a variável CARD0, informando a placa de vídeo que possui.
+O usuário deve apenas editar a variável `CARD0`, informando a placa de vídeo que possui.
 
 </div>
