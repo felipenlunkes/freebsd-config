@@ -1,5 +1,7 @@
 # English
 
+<div align="justify">
+
 The [script](config.sh), present in this directory, is responsible for automating tasks related to the installation of packages not installed by default on a FreeBSD system. The script performs the following tasks:
 
 * Installation and configuration of the Xorg server;
@@ -11,7 +13,11 @@ The [script](config.sh), present in this directory, is responsible for automatin
 
 The user must only edit the CARD0 variable, informing the video card he has.
 
+</div>
+
 # Português
+
+<div align="justify">
 
 O [script](config.sh), presente neste diretório, é responsável por automatizar tarefas ligadas à instalação de pacotes não instalados por padrão em um sistema FreeBSD. O script realiza as seguintes tarefas:
 
@@ -23,3 +29,5 @@ O [script](config.sh), presente neste diretório, é responsável por automatiza
 * Atualização do catálogo do pkg e do FreeBSD (kernel e userland).
 
 O usuário deve apenas editar a variável CARD0, informando a placa de vídeo que possui.
+
+</div>
