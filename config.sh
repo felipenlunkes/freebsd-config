@@ -61,6 +61,10 @@ echo "proc     /proc     procfs     rw     0     0" >> /etc/fstab
 pw groupmod wheel -m $USER
 pw groupmod video -m $USER 
 
+# Agora vamos inserir o usuário atual em sudoers, para usar o sudo
+
+echo "$USER ALL=(ALL:ALL) ALL" >> /usr/local/etc/sudoers
+
 freebsd-update fetch
 
 freebsd-update install
