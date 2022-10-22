@@ -1,4 +1,21 @@
-# English
+<div align="center">
+
+<h1> New FreeBSD installation config script</h1>
+
+![](https://img.shields.io/github/license/felipenlunkes/freebsd-config.svg)
+![](https://img.shields.io/github/stars/felipenlunkes/freebsd-config.svg)
+![](https://img.shields.io/github/issues/felipenlunkes/freebsd-config.svg)
+![](https://img.shields.io/github/issues-closed/felipenlunkes/freebsd-config.svg)
+![](https://img.shields.io/github/issues-pr/felipenlunkes/freebsd-config.svg)
+![](https://img.shields.io/github/issues-pr-closed/felipenlunkes/freebsd-config.svg)
+![](https://img.shields.io/github/downloads/felipenlunkes/freebsd-config/total.svg)
+![](https://img.shields.io/github/release/felipenlunkes/freebsd-config.svg)
+
+</div>
+
+<hr>
+
+## English
 
 <div align="justify">
 
@@ -23,7 +40,7 @@ chmod +x config.sh # Make the script executable
 
 </div>
 
-# Português
+## Português
 
 <div align="justify">
 
@@ -48,7 +65,7 @@ chmod +x config.sh # Tornar o script executável
 
 </div>
 
-# Proven results/resultados comprovados!
+## Proven results/resultados comprovados!
 
 <p align='center'>
 <a href="https://github.com/felipenlunkes"><img src="https://github.com/felipenlunkes/freebsd-config/blob/main/img/screenshot.png"></a>&nbsp;&nbsp;
