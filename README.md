@@ -21,6 +21,12 @@ chmod +x config.sh # Make the script executable
 ./config.sh        # Run!
 ```
 
+### Proven Results!
+
+<p align='center'>
+<a href="https://github.com/felipenlunkes"><img height="180em" src="https://github.com/felipenlunkes/freebsd-config/blob/main/img/screenshot.png"></a>&nbsp;&nbsp;
+</p>
+
 </div>
 
 # Português
@@ -45,5 +51,12 @@ su                 # Alterar para usuário root (caso já não esteja logado com
 chmod +x config.sh # Tornar o script executável
 ./config.sh        # Executar!
 ```
+
+
+### Resultados comprovados!
+
+<p align='center'>
+<a href="https://github.com/felipenlunkes"><img height="180em" src="https://github.com/felipenlunkes/freebsd-config/blob/main/img/screenshot.png"></a>&nbsp;&nbsp;
+</p>
 
 </div>
