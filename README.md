@@ -13,6 +13,14 @@ The [script](config.sh), present in this directory, is responsible for automatin
 
 The user must only edit the `CARD0` variable, informing the video card he has.
 
+To run the script, use:
+
+```
+su                 # Change to root user (if not already logged in as root)
+chmod +x config.sh # Make the script executable
+./config.sh        # Run!
+```
+
 </div>
 
 # Português
@@ -29,5 +37,13 @@ O [script](config.sh), presente neste diretório, é responsável por automatiza
 * Atualização do catálogo do pkg e do FreeBSD (kernel e userland).
 
 O usuário deve apenas editar a variável `CARD0`, informando a placa de vídeo que possui.
+
+Para executar o script, use:
+
+```
+su                 # Alterar para usuário root (caso já não esteja logado como root)
+chmod +x config.sh # Tornar o script executável
+./config.sh        # Executar!
+```
 
 </div>
