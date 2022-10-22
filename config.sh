@@ -1,28 +1,39 @@
 #!/bin/sh
 #
-# Script que instala e configura automaticamente pacotes necessários
-# para o uso do FreeBSD com interface gráfica (KDE Plasma) e Wi-Fi
+# Script that automatically installs and configures required packages
+# for using FreeBSD with GUI (KDE Plasma) and Wi-Fi
 #
 # Copyright (C) 2022 Felipe Miguel Nery Lunkes
 #
-# Licenciado sob BSD-3-clause
-
-# Primeiro devemos atualizar o catálogo do pkg
-
-# Primeiro, escolha qual o driver correto para a sua placa de vídeo. Você precisa
-# conhecer apenas o fornecedor da placa. 
+# Licensed under BSD-3-clause
 #
-# Se você utiliza apenas a placa de vídeo integrada da Intel, escolha abaixo i915
-# Se você utiliza uma placa integrada ou dedicada Radeon, escolha radeonkms
-# Se você utiliza placas antigas da AMD, escolha amdgpu
+# First, choose the correct driver for your video card. You need
+# know only the card vendor.
 #
-# Agora altere o valor entre parênteses na variável abaixo (CARD0) com a sua escolha:
+# If you only use Intel integrated graphics, choose below i915
+# If you use an integrated or dedicated Radeon card, choose radeonkms
+# If you use old AMD cards, choose amdgpu
+#
+# Now change the value in the variable below (CARD0) with your choice:
 
 CARD0="radeonkms"
 
+echo "You selected the video card $CARD0. Is this correct?"
+echo "Press <ENTER> to continue or CTRL-C to change."
+
+read videocard 
+
+echo "Ok!"
+
+echo "Now let's check for updates in the pkg catalog..."
+
+# First we must update the pkg catalog
+
 pkg update
 
-# Agora devemos instalar os pacotes necessários
+# Now we must install the necessary packages
+
+echo "Now, let's install the necessary dependencies to run the graphical environment..."
 
 pkg install xorg 
 pkg install nano bash networkmgr wifimgr security/sudo
@@ -30,12 +41,14 @@ pkg install sddm
 pkg install kde5
 pkg intall drm-kmod
 
-# Configurações contidas em /etc/rc.conf
+# Settings in /etc/rc.conf
+
+echo "Now, let's create and edit some configuration files..."
 
 echo 'dbus_enable="YES"' >> /etc/rc.conf
 echo 'hald_enable="YES"' >> /etc/rc.conf
 echo 'sddm_enable="YES"' >> /etc/rc.conf
-echo 'sddm_lang="pt_BR.UTF-8"' >> /etc/rc.conf # Idioma Português (Brasil)
+echo 'sddm_lang="pt_BR.UTF-8"' >> /etc/rc.conf # Language: Portuguese (Brazil)
 echo 'kld_list="kld_list="/boot/modules/$CARD0.ko acpi_video"' >> /etc/rc.conf
 echo 'wlans_ath0="wlan1"' >> /etc/rc.conf
 echo 'ifconfig_wlan1="WPA SYNCDHCP"' >> /etc/rc.conf
@@ -43,31 +56,44 @@ echo 'ifconfig_re0="DHCP"' >> /etc/rc.conf
 echo 'ifconfig_re0_ipv6="inet6 accept_rtadv"' >> /etc/rc.conf
 echo 'create_args_wlan0="country BR regdomain XC900M"' >> /etc/rc.conf
 
-# Criar arquivo vazio wpa_supplicant.conf (populado por wifimgr)
+# Create empty wpa_supplicant.conf file (populated by wifimgr)
 
 touch /etc/wpa_supplicant.conf
 
-# Configurações em /boot/loader.conf
+# Settings in /boot/loader.conf
 
-echo 'kern.vty=vt' >> /boot/loader.conf # Necessário para Xorg
-echo 'if_ath_load="YES"' >> /boot/loader.conf # Carregar driver para placa de rede sem fio Atheros
+echo 'kern.vty=vt' >> /boot/loader.conf # Required for Xorg
+echo 'if_ath_load="YES"' >> /boot/loader.conf # Load driver for Atheros wireless network card
 
-# Agora, montar /proc a cada inicialização, necessário para o KDE e outros serviços
+# Now mount /proc on every boot, needed for KDE and other services
 
 echo "proc     /proc     procfs     rw     0     0" >> /etc/fstab
 
-# Adiciona o usuário apra utilizar os serviços de vídeo
+# Add user to use video services
 
 pw groupmod wheel -m $USER
 pw groupmod video -m $USER 
 
-# Agora vamos inserir o usuário atual em sudoers, para usar o sudo
+# Now let's enter the current user in sudoers, to use sudo.
 
 echo "$USER ALL=(ALL:ALL) ALL" >> /usr/local/etc/sudoers
 
+# Now let's check for kernel and userland updates
+
+echo "Time to check for important FreeBSD updates and install them if any..."
+
 freebsd-update fetch
 
+# Run freebsd-update install once for update the kernel
+
 freebsd-update install
+
+# And again for the userland
+
 freebsd-update install 
+
+echo "It's time to reboot! Press <ENTER> to reboot..."
+
+read selection
 
 reboot
