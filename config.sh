@@ -35,26 +35,28 @@ pkg update
 
 echo "Now, let's install the necessary dependencies to run the graphical environment..."
 
-pkg install xorg 
-pkg install nano bash networkmgr wifimgr security/sudo
-pkg install sddm
-pkg install kde5
-pkg intall drm-kmod
+pkg install -quiet --yes xorg 
+pkg install -quiet --yes nano bash networkmgr wifimgr security/sudo
+pkg install -quiet --yes sddm plasma5-sddm-kcm
+pkg install -quiet --yes kde5
+pkg install -quiet --yes drm-kmod
 
 # Settings in /etc/rc.conf
 
 echo "Now, let's create and edit some configuration files..."
 
-echo 'dbus_enable="YES"' >> /etc/rc.conf
-echo 'hald_enable="YES"' >> /etc/rc.conf
-echo 'sddm_enable="YES"' >> /etc/rc.conf
-echo 'sddm_lang="pt_BR.UTF-8"' >> /etc/rc.conf # Language: Portuguese (Brazil)
-echo 'kld_list="kld_list="/boot/modules/$CARD0.ko acpi_video"' >> /etc/rc.conf
-echo 'wlans_ath0="wlan1"' >> /etc/rc.conf
-echo 'ifconfig_wlan1="WPA SYNCDHCP"' >> /etc/rc.conf
-echo 'ifconfig_re0="DHCP"' >> /etc/rc.conf
-echo 'ifconfig_re0_ipv6="inet6 accept_rtadv"' >> /etc/rc.conf
-echo 'create_args_wlan0="country BR regdomain XC900M"' >> /etc/rc.conf
+sysrc dbus_enable="YES"
+sysrc hald_enable="YES"
+sysrc sddm_enable="YES"
+sysrc ddm_lang="pt_BR.UTF-8"
+sysrc kld_list="/boot/modules/$CARD0.ko acpi_video"
+sysrc wlans_ath0="wlan1"
+sysrc ifconfig_wlan1="WPA SYNCDHCP"
+sysrc ifconfig_re0="DHCP"
+sysrc ifconfig_re0_ipv6="inet6 accept_rtadv"
+sysrc create_args_wlan0="country BR regdomain XC900M"
+
+service dbus start
 
 # Create empty wpa_supplicant.conf file (populated by wifimgr)
 
