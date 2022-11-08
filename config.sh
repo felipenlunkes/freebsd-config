@@ -10,7 +10,7 @@
 # First, choose the correct driver for your video card. You need
 # know only the card vendor.
 #
-# If you only use Intel integrated graphics, choose below i915
+# If you only use Intel integrated graphics, choose below i915kms
 # If you use an integrated or dedicated Radeon card, choose radeonkms
 # If you use old AMD cards, choose amdgpu
 #
