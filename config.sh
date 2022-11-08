@@ -35,11 +35,11 @@ pkg update
 
 echo "Now, let's install the necessary dependencies to run the graphical environment..."
 
-pkg install -quiet --yes xorg 
-pkg install -quiet --yes nano bash networkmgr wifimgr security/sudo
-pkg install -quiet --yes sddm plasma5-sddm-kcm
-pkg install -quiet --yes kde5
-pkg install -quiet --yes drm-kmod
+pkg install xorg 
+pkg install nano bash networkmgr wifimgr security/sudo
+pkg install sddm plasma5-sddm-kcm
+pkg install kde5
+pkg install drm-kmod
 
 # Settings in /etc/rc.conf
 
