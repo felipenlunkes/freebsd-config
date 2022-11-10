@@ -47,6 +47,7 @@ echo
 echo "Ok! Let's continue!"
 echo
 echo "Now let's check for updates in the pkg catalog..."
+echo
 
 # First we must update the pkg catalog
 
@@ -64,6 +65,7 @@ pkg install -q -y chromium firefox vscode gh
 # Settings in /etc/rc.conf
 
 echo "Now, let's create and edit some configuration files..."
+echo
 
 # The default language is Portuguese, but you can change it to use the language of your choice.
 
@@ -109,7 +111,9 @@ echo "$USERSUDOERS ALL=(ALL:ALL) ALL" >> /usr/local/etc/sudoers
 
 # Now let's check for kernel and userland updates
 
+echo
 echo "Time to check for important FreeBSD updates and install them if any..."
+echo
 
 # Run freebsd-update install once for update the kernel
 
