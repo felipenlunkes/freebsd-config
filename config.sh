@@ -18,8 +18,21 @@
 
 CARD0="radeonkms"
 
+clear
+
+echo "Welcome to freebsd-config!"
+echo
+echo "freebsd-config will automatically configure your FreeBSD installation, installing"
+echo "packages needed to use the graphical environment and useful tools, quickly and easily."
+echo
+echo "First, we must define the vendor of your video card. The options are:"
+echo
+echo "- i915 (cards provided by Intel, including HD Graphics;"
+echo "- radeon (cards provided by AMD);"
+echo "- amdgpu (old models of AMD graphics processors)."
+echo
 echo "You selected the video card $CARD0. Is this correct?"
-echo "Press <ENTER> to continue or CTRL-C to change."
+echo "Press <ENTER> to continue or CTRL-C to change (edit config.sh)."
 
 read videocard 
 
@@ -35,11 +48,7 @@ pkg update
 
 echo "Now, let's install the necessary dependencies to run the graphical environment..."
 
-pkg install xorg 
-pkg install nano bash networkmgr wifimgr security/sudo
-pkg install sddm plasma5-sddm-kcm
-pkg install kde5
-pkg install drm-kmod
+pkg install -q -y xorg nano bash networkmgr wifimgr security/sudo sddm plasma5-sddm-kcm kde5 drm-kmod
 
 # Settings in /etc/rc.conf
 
