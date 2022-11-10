@@ -34,10 +34,18 @@ echo
 echo "You selected the video card $CARD0. Is this correct?"
 echo "Press <ENTER> to continue or CTRL-C to change (edit config.sh)."
 
-read videocard 
+read VIDEOCARD 
 
 echo "Ok!"
+echo
+echo "Now enter your (non-root) username to add it to the sudoers file (allows you to run commands"
+echo -n "with root privileges): "
 
+read USERSUDOERS
+
+echo
+echo "Ok! Let's continue!"
+echo
 echo "Now let's check for updates in the pkg catalog..."
 
 # First we must update the pkg catalog
@@ -47,6 +55,8 @@ pkg update
 # Now we must install the necessary packages
 
 echo "Now, let's install the necessary dependencies to run the graphical environment..."
+echo "We will also install useful utilities such as a browser and text editor!"
+echo
 
 pkg install -q -y xorg nano bash networkmgr wifimgr security/sudo sddm plasma5-sddm-kcm kde5 drm-kmod
 pkg install -q -y chromium firefox vscode gh
@@ -54,6 +64,8 @@ pkg install -q -y chromium firefox vscode gh
 # Settings in /etc/rc.conf
 
 echo "Now, let's create and edit some configuration files..."
+
+# The default language is Portuguese, but you can change it to use the language of your choice.
 
 sysrc dbus_enable="YES"
 sysrc hald_enable="YES"
@@ -86,26 +98,30 @@ echo "proc     /proc     procfs     rw     0     0" >> /etc/fstab
 # Add user to use video services
 
 pw groupmod wheel -m $USER
-pw groupmod video -m $USER 
+pw groupmod wheel -m $USERSUDOERS
+pw groupmod video -m $USER
+pw groupmod video -m $USERSUDOERS
 
 # Now let's enter the current user in sudoers, to use sudo.
 
 echo "$USER ALL=(ALL:ALL) ALL" >> /usr/local/etc/sudoers
+echo "$USERSUDOERS ALL=(ALL:ALL) ALL" >> /usr/local/etc/sudoers
 
 # Now let's check for kernel and userland updates
 
 echo "Time to check for important FreeBSD updates and install them if any..."
 
-freebsd-update fetch
-
 # Run freebsd-update install once for update the kernel
 
-freebsd-update install
+freebsd-update fetch install
 
 # And again for the userland
 
-freebsd-update install 
+freebsd-update fetch install
 
+echo
+echo "All ready! Enjoy your new installation of FreeBSD!"
+echo
 echo "It's time to reboot! Press <ENTER> to reboot..."
 
 read selection
