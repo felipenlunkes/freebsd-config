@@ -49,6 +49,7 @@ pkg update
 echo "Now, let's install the necessary dependencies to run the graphical environment..."
 
 pkg install -q -y xorg nano bash networkmgr wifimgr security/sudo sddm plasma5-sddm-kcm kde5 drm-kmod
+pkg install -q -y chromium firefox vscode gh
 
 # Settings in /etc/rc.conf
 
@@ -57,7 +58,9 @@ echo "Now, let's create and edit some configuration files..."
 sysrc dbus_enable="YES"
 sysrc hald_enable="YES"
 sysrc sddm_enable="YES"
-sysrc ddm_lang="pt_BR.UTF-8"
+sysrc sddm_lang="pt_BR.UTF-8"
+sysrc LANG="pt_BR.UTF-8"
+sysrc LC_ALL="pt_BR.UTF-8"
 sysrc kld_list="/boot/modules/$CARD0.ko acpi_video"
 sysrc wlans_ath0="wlan1"
 sysrc ifconfig_wlan1="WPA SYNCDHCP"
