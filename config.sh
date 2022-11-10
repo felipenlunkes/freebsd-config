@@ -124,7 +124,7 @@ freebsd-update fetch install
 freebsd-update fetch install
 
 echo
-echo "All ready! Enjoy your new installation of FreeBSD!"
+echo "All ready! Enjoy your new installation of FreeBSD with GUI and Wi-Fi!"
 echo
 echo "It's time to reboot! Press <ENTER> to reboot..."
 
