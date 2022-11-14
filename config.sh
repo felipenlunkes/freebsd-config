@@ -97,6 +97,10 @@ echo 'if_ath_load="YES"' >> /boot/loader.conf # Load driver for Atheros wireless
 
 echo "proc     /proc     procfs     rw     0     0" >> /etc/fstab
 
+# Add user to wheel group
+
+pw usermod $USERSUDOERS -G wheel
+
 # Add user to use video services
 
 pw groupmod wheel -m $USER
