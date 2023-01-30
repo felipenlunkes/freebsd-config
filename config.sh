@@ -68,7 +68,7 @@ echo "We will also install useful utilities such as a browser and text editor!"
 echo
 
 pkg install -q -y xorg nano bash networkmgr wifimgr security/sudo drm-kmod
-pkg install -q -y chromium firefox vscode gh
+pkg install -q -y chromium firefox vscode gh accessibility/gammy
 
 # Settings in /etc/rc.conf
 
